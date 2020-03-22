@@ -22,3 +22,8 @@ body {
 .other-message {
     text-align: left;
 }
+
+.error {
+    background-color: darkred;
+    color: white;
+}
