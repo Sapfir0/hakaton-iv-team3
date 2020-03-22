@@ -1,0 +1,47 @@
+body {
+    width: 70%;
+    margin: auto;
+}
+
+#chat {
+    background-color: aliceblue;
+    height: 600px;
+    border: 1px solid grey;
+    margin-bottom: 10px;
+}
+
+#controls {
+
+    margin: auto;
+}
+
+.my-message, .other-message {
+    background-color: azure;
+    border-radius: 5px;
+}
+
+.my-message {
+    text-align: right;
+}
+
+.other-message {
+    text-align: left;
+}
+
+.error {
+    background-color: darkred;
+    color: white;
+}
+
+.date {
+    color: gray;
+    font-size: 10px;
+}
+
+#chatList {
+
+}
+
+.chat {
+
+}
