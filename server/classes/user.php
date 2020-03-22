@@ -3,39 +3,33 @@
 namespace server\classes;
 
 use Connection\MysqliConnection;
-use Connection\Connection;
+use \server\classes\Connection;
 
 class User
 {
     protected $userLogin;
     protected $userPassword;
 
-    function __construct()
+    public function __construct($userLogin, $userPassword)
     {
+        $this->userLogin = $userLogin;
+        $this->userPassword = $userPassword;
     }
 
     public function getUser()
     {
         $result = array();
-        $conn = new Connection();
-        $db = new MysqliConnection();
+        $db = new DataBaseConnection();
         try {
-            $db->connect($conn);
-            $db->startTransaction();
-            $userLogin = $db->prepare($this->userLogin);
-            $userPassword = $db->prepare($this->userPassword);
-            $table = $db->quote('users');
-            $query = "SELECT (ID, LOGIN) FROM $table WHERE VALUE (LOGIN = $userLogin, PASSWORD = $userPassword)";
-            $dbResult = $db->query($query);
-            $db->commitTransaction();
-            $db->close();
-            if($arDesult = $dbResult->fetch_assoc()){
-                $result['DATA'] = $arDesult;
-            }
+            $dbResult = $db->executeQuery(
+                "SELECT ID, LOGIN, PASSWORD FROM users WHERE LOGIN = '?' AND PASSWORD = '?'",
+                array($this->userLogin, $this->userPassword)
+            );
+            $result['DATA'] = $dbResult;
             $result['STATUS'] = 'SUCCESS';
         } catch (\Exception $e) {
-            $db->rollbackTransaction();
             $result['STATUS'] = 'EXCEPTION';
+            return 'test';
         }
         return $result;
     }

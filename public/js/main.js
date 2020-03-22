@@ -10,6 +10,7 @@ function start() {
     const sendButton = document.getElementById("sendBtn");
 
     const timerId = setInterval(() => {
+        getMessagesFromDB()
         // get all messages by chat id
         // if db last message has older timestamp - refresh it
     }, 1000)
@@ -17,7 +18,7 @@ function start() {
     sendButton.addEventListener('click', async () => {
         const messageText = document.getElementById("messageInput").value;
         const errorBlock = document.getElementById('error');
-        if (!messageText.match(".+") ) {
+        if (!messageText.trim().match((".+") )) {
             showError(errorBlock, "Почему сообщение пустое")
             return
         }
@@ -46,5 +47,6 @@ async function addMessageToDB(messageText, userId, chatId) {
 }
 
 async function getMessagesFromDB(userId, chatId) {
+    console.log("from db")
     return await post(serverUrl,{"request_action" : "getMessages", "chat_code": chatId, "user_id": userId});
 }

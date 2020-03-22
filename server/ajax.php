@@ -1,10 +1,12 @@
-<?php require_once('/var/www/html/prolog.php');
+<?php
+require_once('/var/www/html/prolog.php');
 
 use server\classes\Request;
 use server\chat\ChatController;
 use server\classes\User;
 
 $request = new Request();
+$result = array();
 
 if ($request->isPost())
 {
@@ -43,19 +45,17 @@ if ($request->isPost())
         }
     }
 
-    if ($request->getPost('request_action') === 'auth') {
+    if ('auth' === $request->getPost('request_action')) {
         //
         $form = $request->getPost('USER_AUTHORIZE');
         $login = $form['LOGIN'];
         $password = $form['PASSWORD'];
-        echo json_encode(array($login, $password));
-        die();
-        $userManager = new User();
+        $userManager = new User($login, $password);
         $userManager->setUserLogin($login);
         $userManager->setUserPassword($password);
         $result = $userManager->getUser();
     }
 }
+$connection = new \mysqli('localhost', 'team3', $this->password, $this->db);
 
-//echo json_encode($result);
-echo json_encode($_POST);
+echo json_encode($result);
