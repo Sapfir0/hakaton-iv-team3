@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="51848930-a6c2-4ebe-b098-5146c5c2b5f5" name="iv" url="http://team3.ivb24.ru">
+        <fileTransfer host="team3.ivb24.ru" port="53037" rootFolder="/var/www/html" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="53037" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

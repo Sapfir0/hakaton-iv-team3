@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="MySQL - team3_db@team3.ivb24.ru" uuid="f8040862-2c6a-43f0-a1d9-4b046d38f7f6">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://team3.ivb24.ru:3306/team3_db</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="MariaDB - team3_db@team3.ivb24.ru" uuid="5d5c1df9-84c7-4583-97ed-802739620c98">
+      <driver-ref>mariadb</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.mariadb.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mariadb://team3.ivb24.ru:3306/team3_db</jdbc-url>
+    </data-source>
+  </component>
+</project>
