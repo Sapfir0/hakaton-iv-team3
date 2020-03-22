@@ -1,10 +1,10 @@
-document.addEventListener('DOMContentLoaded', start);
-
 const serverUrl = "/server/ajax.php";
 import { post } from "./ajaxHelper.js";
 import {showError, hideError} from "./frontErrors.js"
 
 var lastMessageDate;
+
+document.addEventListener('DOMContentLoaded', start);
 
 function start() {
     const sendButton = document.getElementById("sendBtn");
