@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', start);
 
 const serverUrl = "/server/ajax.php";
 import { post } from "./ajaxHelper.js";
+import {showError, hideError} from "./frontErrors.js"
 
 var lastMessageDate;
 
@@ -10,6 +11,7 @@ function start() {
 
     const timerId = setInterval(() => {
         // get all messages by chat id
+        // if db last message has older timestamp - refresh it
     }, 1000)
 
     sendButton.addEventListener('click', async () => {
@@ -25,19 +27,8 @@ function start() {
 
         insertMessageToHtml(messageText, true);
 
-
         await addMessageToDB(messageText);
     })
-}
-
-function showError(element, errorString) {
-    element.innerHTML = errorString;
-    element.className = 'error'
-}
-
-function hideError(element) {
-    element.innerHTML = "";
-    element.className = 'clear'
 }
 
 function insertMessageToHtml(messageText, isMyMessage, dateTime) {
@@ -50,9 +41,10 @@ function insertMessageToHtml(messageText, isMyMessage, dateTime) {
 }
 
 async function addMessageToDB(messageText, userId, chatId) {
-    return await post(serverUrl , {"text": messageText, "request_action" : "sendMessage"});
+    console.log("to db")
+    return await post(serverUrl , {"message": messageText, "request_action" : "sendMessage", "chat_code": chatId, "user_id": userId});
 }
 
 async function getMessagesFromDB(userId, chatId) {
-    return await post(serverUrl,{"request_action" : "getMessages"});
+    return await post(serverUrl,{"request_action" : "getMessages", "chat_code": chatId, "user_id": userId});
 }
