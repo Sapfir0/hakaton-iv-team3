@@ -14,7 +14,7 @@ function start() {
 
     sendButton.addEventListener('click', async () => {
         const messageText = document.getElementById("messageInput").value;
-        const errorBlock = document.getElementsByClassName('error')[0];
+        const errorBlock = document.getElementById('error');
         if (!messageText.match(".+") ) {
             showError(errorBlock, "Почему сообщение пустое")
             return
@@ -45,7 +45,7 @@ function insertMessageToHtml(messageText, isMyMessage, dateTime) {
     const messageClass = isMyMessage ? "my-message" : "other-message";
     const currentDate = new Date();
     const parsedDate = `${currentDate.getHours()}ч ${currentDate.getMinutes()}м ${currentDate.getSeconds()}с`;
-    const html = `<div class='${messageClass}'> ${messageText} ${parsedDate} </div>`;
+    const html = `<div class='${messageClass}'> ${messageText} <div class="date"> ${parsedDate} </div> </div>`;
     chat.insertAdjacentHTML('beforeend', html);
 }
 
